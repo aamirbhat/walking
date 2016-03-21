@@ -205,11 +205,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataPoint(DataPoint dataPoint) {
                 for (Field field : dataPoint.getDataType().getFields()) {
-                    Value val = dataPoint.getValue(field);
+                    final Value val = dataPoint.getValue(field);
                     stepcount = stepcount + Integer.parseInt(String.valueOf(val));
                     Log.i(TAG, "Detected DataPoint field: " + field.getName());
                     Log.i(TAG, "Detected DataPoint value: " + val);
+                    if (field.getName().compareToIgnoreCase("steps") == 0) {
 
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                stepCountView.setText("Value " + val);
+                            }
+                        });
+                    }
                 }
             }
         };
