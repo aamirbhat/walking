@@ -17,6 +17,7 @@ limitations under the License.
     package="com.google.android.gms.fit.samples.basicsensorsapi">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-feature android:name="android.hardware.sensor.stepcounter" />
 
     <application
         android:allowBackup="false"
@@ -26,20 +27,27 @@ limitations under the License.
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"/>
+
+
+        <service
+            android:name=".FitService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".StepCounterActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver android:name=".BackgroundStep" />
 
         <service
-            android:name=".FitService"
+            android:name=".StepCountService"
             android:enabled="true"
             android:exported="true"></service>
-
-        <activity android:name=".StepCounterActivity"></activity>
     </application>
 
 </manifest>

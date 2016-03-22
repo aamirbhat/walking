@@ -1,17 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#99ff00ff">
-<TextView android:textColor="@android:color/white"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Step count since reboot:"/>
-<TextView android:id="@+id/count"
-    android:textSize="36dp"
-    android:textColor="@android:color/white"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"/>
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15sp"
+        android:id="@+id/linearLayout">
+        <LinearLayout
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Step count since last entry"
+                android:id="@+id/textView"
+                android:layout_gravity="center_horizontal"/>
+            <TextView android:id="@+id/count_lastEntry"
+                android:textSize="36dp"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
+
+            <TextView android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Step count since reboot"
+                android:id="@+id/textView1"
+                android:layout_gravity="center_horizontal"/>
+            <TextView android:id="@+id/count_reboot"
+                android:textSize="36dp"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:id="@+id/count"
+        android:textSize="36dp"
+        android:textColor="@android:color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="1"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true" />
+    <ListView
+        android:id="@+id/list_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/count"></ListView>
+
+</RelativeLayout>
